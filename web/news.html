@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>新闻管理系统</title>
+<!--    引入样式-->
+    <link rel="stylesheet" href="css/common.css" type="text/css">
+    <script type="text/javascript">
+        window.onload = function() {
+            //获取元素
+            var lis=document.getElementsByClassName("lil");
+            var leftBtn=document.getElementsByClassName("left")[0];
+            var rightBtn=document.getElementsByClassName("right")[0];
+            var points=document.getElementsByClassName("point");
+            //制作一个索引数
+            var index=0;
+            //清除所有show
+            function clearShow() {
+                for (var i=0;i<lis.length;i++){
+                    lis[i].className="lil";
+                }
+                for (var i=0;i<points.length;i++){
+                    points[i].className="point";
+                }
+            }
+
+            //实现一个跳转函数
+            function goIndex() {
+                clearShow();
+                lis[index].className="lil show";
+                points[index].className="point show";
+            }
+            //按钮向左切换
+            function goLeft() {
+                if (index==0){
+                    index =4;
+                }
+                else{
+                    index--;
+                }
+                goIndex();
+            }
+            //按钮向右切换
+             function goRight() {
+                 if (index<4){
+                     index++;
+                 } else{
+                     index=0;
+                 }
+                 goIndex();
+             }
+
+
+
+
+             //添加监听事件
+            rightBtn.addEventListener('click',function () {
+                goRight();
+            });
+            leftBtn.addEventListener('click',function () {
+                goLeft();
+            })
+            for (var i=0;i<points.length;i++){
+                points[i].addEventListener('click',function () {
+                    var pointIndex=this.getAttribute('date-index');
+                    //console.log(pointIndex)
+                    index=pointIndex;
+                    goIndex();
+                })
+            }
+
+
+        }
+    </script>
+</head>
+
+<body>
+<!--网页的首部-->
+<div id="header">
+    <!--首部的头部-->
+    <div class="main-top">
+        <!-- logo图-->
+        <div class="logo"><a href="#"><span>娱乐新闻</span></a></div>
+        <!--登陆表单-->
+        <div class="login-box">
+            <form>
+                <label>用户名</label><input type="text" name="username" value="">
+                <label>密码</label><input type="password" name="password" value="">
+                <button type="submit">登录</button>
+            </form>
+        </div>
+
+
+
+          <!-- 导航-->
+       <div class="nav">
+           <ul class="clearfix">
+               <li><a href="">要闻</a></li>
+               <li><a href="">明星 </a></li>
+               <li><a href="">美图</a></li>
+               <li><a href="">电影</a></li>
+               <li><a href="">电视剧</a></li>
+
+           </ul>
+       </div>
+   </div>
+    <!--banner图-->
+
+    <div class="container">
+        <ul>
+            <li class="lil show" ><img src="images/1.png" alt="" class="im"></li>
+            <li class="lil" ><img src="images/2.png" alt="" class="im"></li>
+            <li class="lil" ><img src="images/3.png" alt="" class="im"></li>
+            <li class="lil" ><img src="images/4.png" alt="" class="im"></li>
+            <li class="lil" ><img src="images/5.png" alt="" class="im"></li>
+        </ul>
+        <button class="left"><</button>
+        <button class="right">></button>
+
+        <div class="pointList">
+            <div class="point show" date-index="0"></div>
+            <div class="point" date-index="1"></div>
+            <div class="point"date-index="2"></div>
+            <div class="point"date-index="3"></div>
+            <div class="point"date-index="4"></div>
+        </div>
+        </div>
+
+
+
+
+    <!--搜索框-->
+<div class="search-box">
+    <div class="sl">
+        <div class="sr clearfix">
+                <span class="left-search clearfix">
+                    <label>站内搜索</label><input type="text" value="关键词">
+                    <button class="go-btn"></button>
+                </span>
+            <span class="right-link">
+                    <label>快速搜索</label>
+                    <select name="">
+                        <option value="">----综艺----</option>
+                        <option value="">----电视----</option>
+                        <option value="">----电影----</option>
+                        <option value="">----明星----</option>
+                        <option value="">----美图----</option>
+                        <option value="">----音乐----</option>
+                    </select>
+                    <button class="go-btn"></button>
+                </span>
+        </div>
+    </div>
+</div>
+</div>
+<!--网页的主体-->
+<div id="content">
+    <div class="main-content clearfix">
+     <!-- 主体的左边-->
+        <div class="main-content-left">
+      <!-- 新闻专题-->
+            <div class="class-box">
+                <div class="class-box-header">
+                    <h3>专题新闻</h3>
+                    <span class="fr">
+                        <a href="#">更多...</a>
+                    </span>
+                </div>
+                <div class="class-box-content">
+                    <ul>
+                        <li><a href="#">综艺</a></li>
+                        <li><a href="#">电影</a></li>
+                        <li><a href="#">电视</a></li>
+                        <li><a href="#">音乐</a></li>
+                        <li><a href="#">美图</a></li>
+                        <li class="clear-bottom-line"><a href="#">韩娱</a></li>
+                    </ul>
+                </div>
+            </div>
+          <!-- 最新新闻-->
+            <div class="left-box">
+                <div class="left-box-tbg">
+                    <div class="left-box-bbg">
+                        <div class="left-box-header">
+                            <h3><a href="#">最新新闻</a></h3>
+                        </div>
+                        <div class="left-box-content">
+                            <ul>
+                                <li><a href="#">相信未来义演</a></li>
+                                <li><a href="#">赌王何鸿燊去世</a></li>
+                                <li><a href="#">罗志祥周扬青分手</a></li>
+                                <li><a href="#">有我陪你线上音乐节</a></li>
+                                <li><a href="#">阿娇赖弘国离婚</a></li>
+                                <li><a href="#">绿洲星闻联播</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+         <!--最新评论-->
+            <div class="left-box">
+                <div class="left-box-tbg">
+                    <div class="left-box-bbg">
+                        <div class="left-box-header">
+                            <h3><a href="#">最新评论</a></h3>
+                        </div>
+                        <div class="left-box-content">
+                            <ul>
+                                <li><a href="#">如何强迫孩子过儿童节</a></li>
+                                <li><a href="#">《2020微信聊天能力测试》（成人版）</a></li>
+                                <li><a href="#">12张图了解不堪入目的当代年轻人</a></li>
+                                <li><a href="#">UNINE自曝月入百万 是持久力最强男团</a></li>
+                                <li><a href="#">肖战发新歌获内地榜冠军 罗志祥周扬青情断</a></li>
+                                <li><a href="#">神话成员Junjin参加节目 公开与准新娘的爱情故事</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+     <!--主体的右边-->
+        <div class="main-content-right">
+            <div class="main-text-box">
+                <div class="main-text-box-tbg">
+                    <div class="main-text-box-bbg">
+                        <!--    即时新闻标题       -->
+                        <div class="main-text-box-header">
+                            <h3>即时新闻</h3>
+                        </div>
+                        <!-- 新闻列表-->
+                        <div class="main-text-box-content">
+                            <ul class="news-list-ul clearfix">
+                                <li><span>2020-05-26 12:12:12</span><a href="#">山西临汾市人大：已介入调查仝卓父亲是否涉案</a></li>
+                                <li><span>2020-05-26 12:12:12</span><a href="#">贾乃亮李小璐离婚后首同框面对面交流状态自然</a></li>
+                                <li><span>2020-05-26 12:12:12</span><a href="#">刘强东章泽天北京街头用餐被拍手挽手爱意十足</a></li>
+                                <li class="li-line"><span>2020-05-26 12:12:12</span><a href="#">何猷君何超莲闹掰后现身拒谈为何互相取关</a></li>
+                                <li><span>2020-05-26 12:12:12</span><a href="#">梁家辉母亲于加拿大去世享年89 丧礼今日举行</a></li>
+                                <li><span>2020-05-26 12:12:12</span><a href="#">做朋友做女儿做团宠，我想拥有张艺凡同款人生</a></li>
+                                <li><span>2020-05-26 12:12:12</span><a href="#">《谁说我结不了婚》董又霖童谣上演面筋吻</a></li>
+                                <li class="li-line"><span>2020-05-26 12:12:12</span><a href="#">许志安与郑秀文穿同款破洞外套被拍</a></li>
+                                <li><span>2020-05-26 12:12:12</span><a href="#">孙红雷叫张艺兴劝黄渤撤出《街舞3》</a></li>
+                                <li><span>2020-05-26 12:12:12</span><a href="#">六一快乐！赵薇舒淇张若昀等众星花式过儿童节</a></li>
+                                <li><span>2020-05-26 12:12:12</span><a href="#">吴亦凡戴卡通帽：小朋友今天这样可以过节吗？</a></li>
+                                <li class="li-line"><span>2020-05-26 12:12:12</span><a href="#">倪妮儿童节当上“小班长”</a></li>
+                                <li><span>2020-05-26 12:12:12</span><a href="#">黄景瑜“前女友”风波后现身机场</a></li>
+                                <li><span>2020-05-26 12:12:12</span><a href="#">佟丽娅晒出自拍，并配文：“宝宝们节日快乐”</a></li>
+                                <li><span>2020-05-26 12:12:12</span><a href="#">杨洋做客《立个flag》！</a></li>
+                                <li class="li-line"><span>2020-05-26 12:12:12</span><a href="#">[真粉鉴定局]任嘉伦点评谭松韵“说唱”</a></li>
+                                <li><span>2020-05-26 12:12:12</span><a href="#">毕雯珺爆料被女生追求经历 模仿汤姆猫表情包</a></li>
+                                <li><span>2020-05-26 12:12:12</span><a href="#">炎亚纶揭秘浪费原型 曾有人出500万请他吃饭 </a></li>
+                                <li><span>2020-05-26 12:12:12</span><a href="#">刘耀文首登内地冠军 蔡徐坤沙溢成爆笑cp</a></li>
+                                <li class="li-line"><span>2020-05-26 12:12:12</span><a href="#">王一博登内地冠军 陈立农将发新专辑</a></li>
+                            </ul>
+                        </div>
+                        <!-- 图片新闻-->
+                        <div class="news-pic">
+                            <dl>
+                                <dt><img src="images/new-1.png"></dt>
+                                <dd>袁姗姗在线教学烈儿宝贝瘦身秘诀 还公开自己的健身食谱</dd>
+                            </dl>
+                            <dl>
+                                <dt><img src="images/new-2.png"></dt>
+                                <dd>吴亦凡六一发图</dd>
+                            </dl><dl>
+                            <dt><img src="images/new-3.png" alt=""></dt>
+                            <dd>吴尊六一与小朋友一起过</dd>
+                        </dl>
+                            <dl>
+                                <dt><img src="images/new-4.png"></dt>
+                                <dd>汤唯在线秀女儿照片</dd>
+                            </dl>
+
+                        </div>
+                            <!--分页导航-->
+                        <div class="page-bar">
+                            <ul class="page-num-ul clearfix" >
+                                <li><a href="#">首页</a></li>
+                                <li><a href="#">上一页</a></li>
+                                <li><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li>
+                                <li><a href="#">下一页</a></li>
+                                <li><a href="#">最后页</a></li>
+                            </ul>
+                            <span class="page-go-form">
+                                <label>跳转到</label>
+                                <input type="text" class="page-key">页
+                                <button type="submit" class="page-btn">GO</button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--网页的尾部-->
+<div id="footer" class="main-footer-box">
+    24小时客户服务热线：010-1234323 常见问题解答 新闻热线：023323423<br />
+    文明办网文明上网举报电话：010-6222288 举报邮箱：jubssao@qq.com.cn<br />
+    Coyright&copy;1999-2017 News China gov,All Right Reserved.<br />
+    新闻中心版权所有
+</div>
+</body>
+</html>
